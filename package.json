@@ -1,0 +1,27 @@
+{
+  "name": "aiautomod",
+  "version": "1.0.0",
+  "description": "Automatic moderation using ai",
+  "main": "src/l.js",
+  "author": "dada513",
+  "license": "MIT",
+  "scripts": {
+    "start": "node -r dotenv/config .",
+    "dev": "nodemon -r dotenv/config ."
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "discord.js": "^12.5.3",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "knex": "^0.95.4",
+    "moment": "^2.29.1",
+    "node-ipinfo": "^2.0.2",
+    "slash-create": "^3.0.1",
+    "sqlite3": "^5.0.2",
+    "velocity-api": "^1.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
