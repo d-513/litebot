@@ -2,6 +2,7 @@ import { Creator, GatewayServer } from "slash-create";
 import Discord from "discord.js";
 import path from "path";
 import filteringModule from "./modules/filtering";
+import "./web";
 
 export const client = new Discord.Client();
 
