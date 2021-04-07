@@ -13,7 +13,7 @@ module.exports = class TicketCommand extends SlashCommand {
     }
 
     async run(ctx) {
-        let server = let server = client.guilds.cache.get(ctx.guildID);
+        let server = client.guilds.cache.get(ctx.guildID);
 
         let category = server.channels.cache.find(c => c.name == "tickets" && c.type == "category").id
         if(!category) {
