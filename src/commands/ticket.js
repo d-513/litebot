@@ -15,14 +15,14 @@ module.exports = class TicketCommand extends SlashCommand {
     async run(ctx) {
         let server = ctx.guild;
 
-        let category = server.channels.cache.find(c => c.name == "tickets" && c.type == "category")
+        let category = server.channels.cache.find(c => c.name == "tickets" && c.type == "category").id
         if(!category) {
             ctx.send('Hey, the tickets category does not exist in this discord server, Ask the admins to make one!')
         }
 
         const channel = await ctx.guild.channels.create(`ticket: ${ctx.author.tag}`);
 
-        channel.setParent("820276801652916270");
+        channel.setParent(category);
 
         channel.updateOverwrite(ctx.guild.id, {
             SEND_MESSAGE: false,
