@@ -1,20 +1,24 @@
-import { Cache } from "../database/default";
+import mongoose from "mongoose";
 import axios from "axios";
-
+const Cache = mongoose.model("Cache");
 class CovidClient {
   constructor() {
     this.axios = axios.create({
       baseURL: "https://disease.sh/v3/covid-19/",
     });
-    this.cache = new Cache("corona", 10 * 1000 * 60);
   }
 
   async _doRequest(endpoint) {
-    if (await this.cache.get(endpoint)) {
-      return JSON.parse(await this.cache.get(endpoint));
+    const dat = await Cache.findOne({ ca: "covid", key: endpoint });
+    if (dat) {
+      return dat.value;
     } else {
       const { data } = await this.axios.get(endpoint);
-      this.cache.set(endpoint, JSON.stringify(data));
+      await Cache.create({
+        ca: "covid",
+        key: endpoint,
+        value: data,
+      });
       return data;
     }
   }

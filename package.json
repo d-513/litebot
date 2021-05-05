@@ -14,11 +14,11 @@
     "discord.js": "^12.5.3",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
-    "knex": "^0.95.4",
     "moment": "^2.29.1",
+    "mongoose": "^5.12.7",
     "node-ipinfo": "^2.0.2",
     "slash-create": "^3.0.1",
-    "sqlite3": "^5.0.2",
+    "uid": "^2.0.0",
     "velocity-api": "^1.0.6"
   },
   "devDependencies": {

@@ -1,7 +1,6 @@
 import * as helpers from "../helpers";
 import { MessageAttachment, MessageEmbed } from "discord.js";
 import { SlashCommand, CommandContext, CommandOptionType } from "slash-create";
-import { WarningManager } from "../drivers/database/default";
 import { client } from "../index";
 
 module.exports = class WarnCommand extends SlashCommand {
@@ -48,7 +47,7 @@ module.exports = class WarnCommand extends SlashCommand {
 
     // Not required initially, but required for reloading with a fresh file.
     this.filePath = __filename;
-    this._manager = new WarningManager();
+    // this._manager = new WarningManager();
   }
 
   /**

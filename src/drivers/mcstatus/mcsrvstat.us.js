@@ -1,13 +1,15 @@
-import { Cache } from "../database/sqlite";
+import mongoose from "mongoose";
 import axios from "axios";
 
-const statusCache = new Cache("mcstatus", 1000 * 60 * 60);
+const Cache = mongoose.model("Cache");
+
 export async function getStatus(server) {
-  if (await statusCache.get(server)) {
-    return JSON.parse(await statusCache.get(server));
+  const dat = await Cache.findOne({ ca: "mc", key: server });
+  if (dat) {
+    return dat.value;
   } else {
     const { data } = await axios.get(`https://api.mcsrvstat.us/2/${server}`);
-    await statusCache.set(server, JSON.stringify(data));
+    await Cache.create({ ca: "mc", key: server, value: data });
     return data;
   }
 }

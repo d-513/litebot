@@ -2,8 +2,16 @@ import { Creator, GatewayServer } from "slash-create";
 import Discord from "discord.js";
 import path from "path";
 import filteringModule from "./modules/filtering";
+import mongoose from "mongoose";
+import "./models/Cache";
 
 export const client = new Discord.Client();
+mongoose.connect(process.env.MONGO, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true,
+});
 
 client.once("ready", () => {
   console.log("Bot ready");
